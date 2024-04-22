@@ -49,12 +49,37 @@ public class Main {
                      }
 
                  }
+                    do {
+                        System.out.println("Would you like to checkout any of the available books?");
+                        input = scanner.nextInt();
+                        System.out.println("\t(1) Yes");
+                        System.out.println("\t(2) No");
 
+                        switch(input) {
+                            case(1):
+                                System.out.println("Please select the name of the book you wish to enter!");
+                                String title_checkingOut = scanner.next();
+                                System.out.println("Please enter your name to Checkout");
+                                String name_checkingOut = scanner.next();
+                                for(int i = 0;i < Books.length; i++) {
+                                if(Books[i].getTitle().equalsIgnoreCase(title_checkingOut)){
+                                    Books[i].checkOut(name_checkingOut);
+                                }
+                                }
+                                break;
+                            case(2):
+                                System.out.println("Exiting Selection");
+                                break;
+                        }
+
+
+                    } while(input != 2);
                  break;
 
              case (2):
                  break;
              case (3):
+                 System.out.println("Ending Program");
                  break;
          }
 
