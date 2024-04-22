@@ -12,7 +12,7 @@ public class Book {
         this.isbn = isbn;
         this.title = title;
         this.checkedOutTo = "";
-        isCheckedOut  = false;
+        this.isCheckedOut  = false;
     }
 
     public String getCheckedOutto() {
@@ -67,6 +67,6 @@ public class Book {
 
     }
 public String toString() {
-        return "";
+        return "Book id: " + id + "  ISBN Number: " + isbn + "  Title: " + title;
 }
 }

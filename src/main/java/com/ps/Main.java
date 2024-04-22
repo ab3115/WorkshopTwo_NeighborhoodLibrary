@@ -31,26 +31,42 @@ public class Main {
 
 
 
+    int input;
 
-/*
-    do {
+    do   {
 
-    System.out.println("Welcome! Please select which service you'd like to use:");
-    System.out.println("\t(1) Show avaliable books");
-    System.out.println("\t(2) Show checked out books");
-    System.out.println("\t(3) Exit program");
-    int input = scanner.nextInt();
+         System.out.println("Welcome! Please select which service you'd like to use:");
+         System.out.println("\t(1) Show avaliable books");
+         System.out.println("\t(2) Show checked out books");
+         System.out.println("\t(3) Exit program");
+         input = scanner.nextInt();
 
-   switch(input) {
-       case(1):
+         switch(input) {
+             case (1):
+                 for (int i = 0; i < Books.length; i++) {
+                     if (Books[i].isCheckedOut() == false) {
+                         System.out.println(Books[i].toString());
+                     }
 
-    }
+                 }
+
+                 break;
+
+             case (2):
+                 break;
+             case (3):
+                 break;
+         }
 
 
 
 
-}while(input != 3);
-*/
-    }
+
+
+
+
+    }while(input != 3);
+
+       }
 
 }
