@@ -55,10 +55,6 @@ public class Book {
         this.id = id;
     }
 
-    public void checkIn(String name){
-        this.checkedOutTo = name;
-    }
-
     public void checkOut(String name){
         this.checkedOutTo = name;
         this.isCheckedOut = true;

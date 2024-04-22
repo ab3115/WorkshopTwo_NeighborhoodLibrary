@@ -31,7 +31,8 @@ public class Main {
 
 
 
-    int input;
+    int inputMainMenu;
+
 
     do   {
 
@@ -39,9 +40,9 @@ public class Main {
          System.out.println("\t(1) Show avaliable books");
          System.out.println("\t(2) Show checked out books");
          System.out.println("\t(3) Exit program");
-         input = scanner.nextInt();
+         inputMainMenu = scanner.nextInt();
 
-         switch(input) {
+         switch(inputMainMenu) {
              case (1):
                  for (int i = 0; i < Books.length; i++) {
                      if (Books[i].isCheckedOut() == false) {
@@ -49,37 +50,95 @@ public class Main {
                      }
 
                  }
+                 int inputCheckOut;
+
                     do {
                         System.out.println("Would you like to checkout any of the available books?");
-                        input = scanner.nextInt();
                         System.out.println("\t(1) Yes");
                         System.out.println("\t(2) No");
+                        inputCheckOut = scanner.nextInt();
+                        ;
 
-                        switch(input) {
+                        switch(inputCheckOut) {
                             case(1):
-                                System.out.println("Please select the name of the book you wish to enter!");
-                                String title_checkingOut = scanner.next();
-                                System.out.println("Please enter your name to Checkout");
-                                String name_checkingOut = scanner.next();
+                                System.out.println("Please select the name of the book you wish to check out!");
+                                String title_checkingOut = scanner.nextLine();
+                                scanner.nextLine();
+                                System.out.println("Please enter your name to check out");
+                                String name_checkingOut = scanner.nextLine();
+
                                 for(int i = 0;i < Books.length; i++) {
                                 if(Books[i].getTitle().equalsIgnoreCase(title_checkingOut)){
                                     Books[i].checkOut(name_checkingOut);
+
+
+
                                 }
+
+
+
                                 }
+
+
                                 break;
                             case(2):
                                 System.out.println("Exiting Selection");
                                 break;
+                            default:
+                                System.out.println("Invalid input. Please enter 1 or 2.");
+                                break;
                         }
 
 
-                    } while(input != 2);
+                    } while(inputCheckOut != 2);
                  break;
 
              case (2):
+
+                 for (int i = 0; i < Books.length; i++) {
+                     if (Books[i].isCheckedOut() == true) {
+                         System.out.println(Books[i].toString() + Books[i].getCheckedOutto());
+                     }
+                     else{
+                         System.out.print("No checked out books");
+                     }
+                 }
+                 String input_checkIn;
+                 do {
+
+                     System.out.println("Would you like to:");
+                     System.out.println("\t(C)heck in a book");
+                     System.out.println("\t(X)-it program");
+                     input_checkIn = scanner.nextLine();
+                     scanner.nextLine();
+
+                     switch(input_checkIn) {
+                         case "C":
+
+                             System.out.println("Please enter the id of the book you're checking in");
+                             int id_checkIn = scanner.nextInt();
+
+                         for (int i = 0; i < Books.length; i++) {
+                             if (Books[i].getId() == id_checkIn){
+                                 Books[i].checkIn();
+                             }
+                         }
+                        break;
+
+                         case "X":
+                             System.out.println("Returning to Main Menu");
+                             break;
+                     }
+
+
+                 }while(!input_checkIn.equals("X"));
+
                  break;
              case (3):
                  System.out.println("Ending Program");
+                 break;
+             default:
+                 System.out.println("Invalid input. Please enter 1, 2, or 3.");
                  break;
          }
 
@@ -90,7 +149,7 @@ public class Main {
 
 
 
-    }while(input != 3);
+    }while(inputMainMenu != 3);
 
        }
 
