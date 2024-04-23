@@ -61,21 +61,19 @@ public class Main {
 
                                     System.out.println("Please select the name of the book you wish to check out!");
                                     String title_checkingOut = scanner.nextLine();
-                                    scanner.nextLine();
                                     System.out.println("Please enter your name to check out");
                                     String name_checkingOut = scanner.nextLine();
-                                    scanner.nextLine();
                                     menuCheckOut(Books, title_checkingOut, name_checkingOut);
                                     break;
 
 
                                 case (2):
 
-                                    System.out.println("Exiting Selection");
+                                    System.out.println("Exiting selection...");
                                     break;
 
                                 default:
-                                    System.out.println("Invalid input. Please enter 1 or 2.");
+                                    System.out.println("Invalid input. Please select choice 1 or 2.");
                                     break;
                             }
 
@@ -109,6 +107,9 @@ public class Main {
                                     case "X":
                                         System.out.println("Returning to Main Menu");
                                         break;
+                                    default:
+                                        System.out.println("Invalid input. Please enter C or X.");
+                                        break;
                                 }
                             } while (!input_checkIn.equals("X"));
                             break;
@@ -140,9 +141,13 @@ public class Main {
 
             if (Books[i].isCheckedOut() == false) {
                 System.out.println(Books[i].toString());
+
             }
         }
+        //New line for nicer appearance
+        System.out.println();
     }
+
 
     public static void menuCheckedOutTo(Book[] Books){
 
@@ -178,7 +183,7 @@ public class Main {
             if (Books[i].getTitle().equalsIgnoreCase(title_checkingOut)) {
                 Books[i].checkOut(name_checkingOut);
                 checked_out = true;
-                System.out.println("This book is now checked out to:" + Books[i].getCheckedOutto());
+                System.out.println("This book is now checked out to: " + Books[i].getCheckedOutto());
                 }
 
          }
