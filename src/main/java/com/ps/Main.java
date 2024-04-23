@@ -92,6 +92,7 @@ public class Main {
                                 System.out.println("\t(X) Exit program");
                                 input_checkIn = scanner.nextLine();
                                 scanner.nextLine();
+                                scanner.nextLine();
 
                                 switch (input_checkIn) {
                                     case "C":
@@ -115,7 +116,6 @@ public class Main {
                                 }
                             } while (!input_checkIn.equals("X"));
                             break;
-                            //fix the extra input required and ignore case senseitivity.
 
 
                         case (3):
@@ -149,7 +149,9 @@ public class Main {
 
 
     public static void menuCheckedOutTo(Book[] Books){
+
         boolean books_are_checkedOut = false;
+        System.out.println("Books Checked Out:");
         for (int i = 0; i < Books.length; i++) {
 
             if (Books[i].isCheckedOut() == true) {
@@ -164,15 +166,20 @@ public class Main {
         }else{
             System.out.println("There are currently no books checked out.");
         }
+
     }
 
+
+
     public static void menuCheckIn(Book[] Books, int id_checkIn){
+
         boolean valid_id = false;
         for (int i = 0; i < Books.length; i++) {
 
             if (Books[i].getId() == id_checkIn) {
                 Books[i].checkIn();
                 valid_id = true;
+                System.out.println(Books[i].getTitle() + " was successfully checked in. Thank You!");
             }
 
         }
@@ -181,23 +188,28 @@ public class Main {
         }
     }
 
+
     public static void menuCheckOut(Book[] Books, String title_checkingOut, String name_checkingOut) {
-        boolean checked_out = false;
+
+        boolean matching_title_confirm = false;
+        boolean checked_out_confirm = false;
          for (int i = 0; i < Books.length; i++) {
 
             if (Books[i].getTitle().equalsIgnoreCase(title_checkingOut)) {
-                Books[i].checkOut(name_checkingOut);
-                checked_out = true;
-                System.out.println(Books[i].getTitle() + " is now checked out to: " + Books[i].getCheckedOutto());
+                if (!Books[i].isCheckedOut()) {
+                    Books[i].checkOut(name_checkingOut);
+                    checked_out_confirm = true;
+                    System.out.println(Books[i].getTitle() + " is now checked out to: " + Books[i].getCheckedOutto());
+                }else{
+                    System.out.println(Books[i].getTitle() + " is currently checked out, please select another title");
+                    matching_title_confirm = true;
                 }
+            }
 
          }
-         if(checked_out == false){
-             System.out.println(title_checkingOut + " was not found, please enter a valid title.");
+         if(!checked_out_confirm && !matching_title_confirm){
+             System.out.println("Unfortunately " + title_checkingOut + " was not found, please enter a valid title from our selection.");
          }
-        //add if no books are avaliable for checkout
-
-
 
     }
 
