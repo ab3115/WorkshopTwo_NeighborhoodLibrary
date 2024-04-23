@@ -34,7 +34,7 @@ public class Main {
 
         do {
 
-            System.out.println("Welcome! Please select which service you'd like to use:");
+            System.out.println("Welcome to the Neighborhood Library! Please select which service you'd like to use:");
             System.out.println("\t(1) Show avaliable books");
             System.out.println("\t(2) Show checked out books");
             System.out.println("\t(3) Exit program");
@@ -89,7 +89,7 @@ public class Main {
 
                                 System.out.println("Would you like to:");
                                 System.out.println("\t(C)heck in a book");
-                                System.out.println("\t(X)-it program");
+                                System.out.println("\t(X) Exit program");
                                 input_checkIn = scanner.nextLine();
                                 scanner.nextLine();
 
@@ -107,13 +107,14 @@ public class Main {
                                     case "X":
                                         System.out.println("Returning to Main Menu");
                                         break;
+
                                     default:
                                         System.out.println("Invalid input. Please enter C or X.");
                                         break;
                                 }
                             } while (!input_checkIn.equals("X"));
                             break;
-
+                            //fix the extra input required and ignore case senseitivity.
 
 
                         case (3):
@@ -127,10 +128,7 @@ public class Main {
 
             }
 
-
             while (inputMainMenu != 3) ;
-
-
 
     }
 
@@ -151,15 +149,18 @@ public class Main {
 
     public static void menuCheckedOutTo(Book[] Books){
 
+        //Let users add multiple books?
+
         for (int i = 0; i < Books.length; i++) {
 
             if (Books[i].isCheckedOut() == true) {
-                System.out.println(Books[i].toString() +" " + Books[i].getCheckedOutto());
+                System.out.println(Books[i].toString() +" Checked out to: " + Books[i].getCheckedOutto());
             }
 
         }
-
-    }
+    System.out.println("There are currently a total of " + Book.getNumBooksCheckedOut() + " book(s) checked out.");
+        System.out.println((20 - Book.getNumBooksCheckedOut()) + " book(s) are still available for checkout from our collection.");
+    } //Add if none checked out
 
     public static void menuCheckIn(Book[] Books, int id_checkIn){
         boolean valid_id = false;
@@ -183,14 +184,14 @@ public class Main {
             if (Books[i].getTitle().equalsIgnoreCase(title_checkingOut)) {
                 Books[i].checkOut(name_checkingOut);
                 checked_out = true;
-                System.out.println("This book is now checked out to: " + Books[i].getCheckedOutto());
+                System.out.println(Books[i].getTitle() + " is now checked out to: " + Books[i].getCheckedOutto());
                 }
 
          }
          if(checked_out == false){
-             System.out.println(name_checkingOut + " was not found, please enter a valid title.");
+             System.out.println(title_checkingOut + " was not found, please enter a valid title.");
          }
-
+        //add if no books are avaliable for checkout
 
 
 
