@@ -99,6 +99,7 @@ public class Main {
                                         System.out.println("Please enter the id of the book you're checking in");
                                         int id_checkIn = scanner.nextInt();
                                         scanner.nextLine();
+                                        scanner.nextLine();
 
                                        menuCheckIn(Books, id_checkIn);
 
@@ -148,19 +149,22 @@ public class Main {
 
 
     public static void menuCheckedOutTo(Book[] Books){
-
-        //Let users add multiple books?
-
+        boolean books_are_checkedOut = false;
         for (int i = 0; i < Books.length; i++) {
 
             if (Books[i].isCheckedOut() == true) {
                 System.out.println(Books[i].toString() +" Checked out to: " + Books[i].getCheckedOutto());
+                books_are_checkedOut = true;
             }
-
         }
+
+        if(books_are_checkedOut == true){
     System.out.println("There are currently a total of " + Book.getNumBooksCheckedOut() + " book(s) checked out.");
         System.out.println((20 - Book.getNumBooksCheckedOut()) + " book(s) are still available for checkout from our collection.");
-    } //Add if none checked out
+        }else{
+            System.out.println("There are currently no books checked out.");
+        }
+    }
 
     public static void menuCheckIn(Book[] Books, int id_checkIn){
         boolean valid_id = false;
